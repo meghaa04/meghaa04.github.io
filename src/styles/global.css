@@ -1,0 +1,332 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+:root {
+  --void: #03050b;
+  --navy: #060812;
+  --navy-2: #0a1022;
+  --violet-deep: #150f2b;
+  --violet: #7c5cff;
+  --iris: #b39dff;
+  --blue: #7aa2ff;
+  --teal: #7ad7c4;
+  --gold: #e8c98a;
+  --rose: #f0a6b4;
+  --text: #eef1f8;
+  --text-dim: #a9b3cc;
+  --text-faint: #6e7796;
+  --ring: rgba(150, 160, 200, 0.14);
+  --ring-strong: rgba(180, 170, 255, 0.35);
+  --panel: rgba(13, 18, 38, 0.62);
+  --sun-core: #f5e6c8;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  color: var(--text);
+  background:
+    radial-gradient(1400px 800px at 70% -10%, rgba(68, 52, 122, 0.35), transparent 60%),
+    radial-gradient(1000px 700px at 10% 110%, rgba(30, 48, 96, 0.3), transparent 55%),
+    linear-gradient(180deg, #05060d 0%, #070a16 50%, #05060d 100%);
+  background-attachment: fixed;
+  overflow-x: hidden;
+  letter-spacing: 0.01em;
+}
+
+::selection {
+  background: rgba(124, 92, 255, 0.4);
+  color: var(--text);
+}
+
+:focus-visible {
+  outline: 2px solid var(--iris);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--void);
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, rgba(124, 92, 255, 0.5), rgba(122, 162, 255, 0.4));
+  border-radius: 6px;
+  border: 2px solid var(--void);
+}
+
+a {
+  color: inherit;
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+.text-dim {
+  color: var(--text-dim);
+}
+.text-faint {
+  color: var(--text-faint);
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.32em;
+  font-size: 0.68rem;
+  color: var(--text-dim);
+}
+
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--ring);
+  border-radius: 18px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.btn-universe {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0.9rem 1.7rem;
+  border-radius: 999px;
+  border: 1px solid var(--ring-strong);
+  background: linear-gradient(180deg, rgba(124, 92, 255, 0.16), rgba(122, 162, 255, 0.06));
+  color: var(--text);
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: box-shadow 0.4s ease, transform 0.4s ease, border-color 0.4s ease;
+}
+.btn-universe:hover {
+  border-color: rgba(179, 157, 255, 0.7);
+  box-shadow:
+    0 0 0 1px rgba(179, 157, 255, 0.15),
+    0 0 34px rgba(124, 92, 255, 0.35),
+    inset 0 0 24px rgba(124, 92, 255, 0.12);
+  transform: translateY(-2px);
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  border: 1px solid var(--ring);
+  border-radius: 999px;
+  padding: 0.28rem 0.75rem;
+  font-size: 0.74rem;
+  color: var(--text-dim);
+  letter-spacing: 0.04em;
+}
+
+.mission-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: 1px solid var(--ring-strong);
+  border-radius: 999px;
+  padding: 0.55rem 1.1rem;
+  background: rgba(10, 16, 34, 0.7);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  font-family: var(--font-display);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-size: 0.72rem;
+  color: var(--text);
+  cursor: pointer;
+  transition: box-shadow 0.4s ease, transform 0.4s ease;
+}
+.mission-chip:hover {
+  box-shadow: 0 0 26px rgba(122, 162, 255, 0.4);
+  transform: translateY(-2px);
+}
+
+.skip-link {
+  position: fixed;
+  left: 1rem;
+  top: -100px;
+  z-index: 200;
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  background: var(--violet);
+  color: white;
+  font-weight: 600;
+  transition: top 0.25s ease;
+}
+.skip-link:focus-visible {
+  top: 1rem;
+}
+
+/* ---------- keyframes ---------- */
+
+@keyframes orbit-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes orbit-spin-reverse {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes sun-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.85;
+  }
+  50% {
+    transform: scale(1.06);
+    opacity: 1;
+  }
+}
+
+@keyframes float-y {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-7px);
+  }
+}
+
+@keyframes drift {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(3px, -2px);
+  }
+  75% {
+    transform: translate(-3px, 2px);
+  }
+}
+
+@keyframes comet-cross {
+  0% {
+    transform: translate(0, 0);
+    opacity: 0;
+  }
+  4% {
+    opacity: 1;
+  }
+  12% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(1400px, 500px);
+    opacity: 0;
+  }
+}
+
+@keyframes dash-flow {
+  to {
+    stroke-dashoffset: -40;
+  }
+}
+
+@keyframes signal-ring {
+  0% {
+    transform: scale(0.4);
+    opacity: 0.9;
+  }
+  100% {
+    transform: scale(2.4);
+    opacity: 0;
+  }
+}
+
+@keyframes twinkle-soft {
+  0%,
+  100% {
+    opacity: 0.35;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes halo-pulse {
+  0%,
+  100% {
+    opacity: 0.65;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.planet-halo {
+  animation: halo-pulse 4.6s ease-in-out infinite;
+}
+
+@keyframes slow-pan {
+  0%,
+  100% {
+    transform: translateX(-1.5%);
+  }
+  50% {
+    transform: translateX(1.5%);
+  }
+}
+
+.animate-orbit {
+  animation: orbit-spin linear infinite;
+}
+.animate-orbit-reverse {
+  animation: orbit-spin-reverse linear infinite;
+}
+.animate-sun-pulse {
+  animation: sun-pulse 5s ease-in-out infinite;
+}
+.animate-float {
+  animation: float-y 6s ease-in-out infinite;
+}
+.animate-drift {
+  animation: drift 12s ease-in-out infinite;
+}
+
+/* ---------- reduced motion ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001s !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001s !important;
+  }
+}
